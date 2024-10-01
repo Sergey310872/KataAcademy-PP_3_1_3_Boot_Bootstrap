@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<a th:href="@{/logout}">Logout</a>
+<br>
+<h2>Users</h2>
+<table border="1" style="width:300px">
+    <tr>
+        <td><h4>id</h4></td>
+        <td><h4>Name</h4></td>
+        <td><h4>Last Name</h4></td>
+        <td><h4>Age</h4></td>
+        <td><h4>Username</h4></td>
+        <td><h4>Password</h4></td>
+        <td><h4>Roles</h4></td>
+    </tr>
+    <tr th:each="msg : ${messages}">
+        <td th:text="${msg.id}">test</td>
+        <td th:text="${msg.name}">test</td>
+        <td th:text="${msg.lastName}">test</td>
+        <td th:text="${msg.age}">test</td>
+        <td th:text="${msg.userName}">test</td>
+        <td th:text="${msg.password}">test</td>
+        <td th:text="${msg.userRolesToString()}">test</td>
+        <td><a th:href="@{/delete(id=${msg.id})}">delete</a></td>
+        <td>
+            <form action="update" method="get">
+                <input type="hidden" name="id" th:value="${msg.id}">
+                <button type="submit">
+                    <i>update</i>
+                </button>
+            </form>
+        </td>
+
+    </tr>
+</table>
+<br>
+<form action="/add" method="get">
+    <button type="submit">
+        <i>Add new User</i>
+    </button>
+</form>
+
+
+</body>
+</html>

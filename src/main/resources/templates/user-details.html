@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<a th:href="@{/logout}">Logout</a>
+<br>
+<h2>Details of User</h2>
+
+<form method="post" th:action="${action}">
+    <table>
+        <tr>
+            <td>id</td>
+            <td>
+                <p th:text="${user.id}">id</p>
+                <input type="hidden" name="id" th:value="${user.id}">
+            </td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" th:value="*{user.name}"></td>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td><input type="text" name="lastName" th:value="*{user.lastName}"></td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td><input type="number" name="age" th:value="*{user.age}"></td>
+        </tr>
+        <tr>
+            <td>username:</td>
+            <td><input type="text" name="userName" th:value="*{user.userName}"></td>
+        </tr>
+        <tr>
+            <td>password:</td>
+            <td><input type="password" name="password" th:value="*{user.password}"></td>
+        </tr>
+        <tr>
+            <td>Roles:</td>
+            <td>
+                <form method="post" th:object="${user}">
+                    <div class="form-group">
+                        <select class="form-control selectpicker" th:field="*{roleList}" id="roles" multiple>
+                            <option th:each="role : ${roles}"
+                                    th:value="${role.id}"
+                                    th:text="${role.roleName}">role
+                            </option>
+                        </select>
+                    </div>
+                </form>
+
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">
+                    <b>SAVE</b>
+                </button>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
