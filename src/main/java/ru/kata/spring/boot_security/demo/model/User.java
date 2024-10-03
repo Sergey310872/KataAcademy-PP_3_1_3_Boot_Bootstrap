@@ -165,4 +165,13 @@ public class User implements UserDetails {
         jsonString += "]}";
         return jsonString;
     }
+
+    public String getRoles() {
+        StringBuilder sb = new StringBuilder();
+        for (Role role : this.roleList) {
+            sb.append(role.getRoleName());
+            sb.append(" ");
+        }
+        return sb.toString();
+    }
 }

@@ -40,7 +40,7 @@ public class UserController {
     @PostMapping(value = "/update")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.updateUser(user);
-        return "redirect:/users";
+        return "redirect:/admin";
     }
 
     @GetMapping("/add")

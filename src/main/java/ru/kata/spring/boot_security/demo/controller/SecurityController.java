@@ -28,10 +28,8 @@ public class SecurityController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
         model.addAttribute("user", user);
-        model.addAttribute("newUser", new User());
         model.addAttribute("messages", serviceUser.getAllUsers());
         model.addAttribute("roles", serviceUser.getAllRoles());
-        model.addAttribute("action", "add");
 
         return "admin";
     }
